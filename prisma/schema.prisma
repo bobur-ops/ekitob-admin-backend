@@ -1,0 +1,37 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Book {
+  id             Int      @id @default(autoincrement())
+  // author name like Андрей Вакарчук
+  author         String
+  // category name like Новогодние книги
+  category       String
+  // organization name - it will display as Издательство like Манн Иванов и Фербер
+  organization   String
+  // age restriction in ages like 18 or 0 if there is no restriction
+  ageRestriction Int
+  // when the book was released 
+  date           DateTime
+  // how many pages
+  pages          Int
+  // book name - displayed as a title
+  name           String
+  // book description
+  description    String
+  // book icon (preview)
+  icon           String
+  // if book is selling, true
+  isInSell       Boolean  @default(true)
+  // book price
+  price          Int
+}
